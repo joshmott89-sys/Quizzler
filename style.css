@@ -1,0 +1,87 @@
+/* ═══════════════════════════════════════
+   DESIGN TOKENS & BASE
+═══════════════════════════════════════ */
+:root {
+  --space-black:    #0a0a0f; 
+  --space-grey:     #1a1a2e; 
+  --starlight-white:#e8e8f0; 
+  --star-dim:       #888899; 
+  --jedi-blue:      #4fc3f7; 
+  --sith-red:       #ef5350; 
+  --gold:           #ffd54f; 
+  --force-green:    #8bc34a; 
+  --glow-blue:      rgba(79, 195, 247, 0.4);
+  --glow-red:       rgba(239, 83, 80, 0.4);
+  --glow-green:     rgba(139, 195, 74, 0.4);
+  --sp-xs: 0.4rem; --sp-sm: 0.8rem; --sp-md: 1.2rem; --sp-lg: 2rem;
+  --font-main: 'Segoe UI', Arial, sans-serif;
+  --font-display: Georgia, 'Times New Roman', serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; width: 100%; overflow: hidden; }
+body { background-color: var(--space-black); color: var(--starlight-white); font-family: var(--font-main); font-size: 16px; display: flex; align-items: center; justify-content: center; }
+.hidden { display: none !important; }
+
+/* ═══════════════════════════════════════
+   VIEWS & ANIMATIONS
+═══════════════════════════════════════ */
+.view { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: var(--sp-lg); gap: var(--sp-md); animation: screenWipe 0.4s ease forwards; overflow-y: auto; }
+@keyframes screenWipe { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
+
+/* ═══════════════════════════════════════
+   SCREENS
+═══════════════════════════════════════ */
+#start-screen { background: radial-gradient(ellipse at top, #1a1a3e 0%, var(--space-black) 70%); }
+.title { font-family: var(--font-display); font-size: clamp(2rem, 8vw, 3.5rem); letter-spacing: 0.15em; color: var(--gold); text-shadow: 0 0 20px rgba(255, 213, 79, 0.5); text-align: center; }
+.subtitle { color: var(--star-dim); font-size: clamp(0.9rem, 3vw, 1.1rem); letter-spacing: 0.05em; text-align: center; }
+
+#quiz-screen { justify-content: flex-start; padding-top: var(--sp-lg); background: var(--space-black); }
+#hud { width: 100%; display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--star-dim); padding: var(--sp-xs) var(--sp-sm); border-bottom: 1px solid #222; }
+#question-card { width: 100%; max-width: 600px; background: var(--space-grey); border: 1px solid #2a2a4a; border-radius: 12px; padding: var(--sp-md); margin-top: var(--sp-md); }
+#question-text { font-size: clamp(1rem, 4vw, 1.25rem); line-height: 1.6; text-align: center; }
+#answers-grid { width: 100%; max-width: 600px; display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: var(--sp-sm); margin-top: var(--sp-sm); }
+
+/* ═══════════════════════════════════════
+   BUTTONS
+═══════════════════════════════════════ */
+.btn { cursor: pointer; border: none; border-radius: 8px; padding: var(--sp-sm) var(--sp-md); font-size: clamp(0.9rem, 3vw, 1rem); font-family: var(--font-main); font-weight: 600; transition: transform 0.15s ease, box-shadow 0.15s ease; -webkit-tap-highlight-color: transparent; }
+.btn:active { transform: scale(0.96); }
+.btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+.btn--primary { background: var(--jedi-blue); color: var(--space-black); box-shadow: 0 0 8px var(--glow-blue), 0 0 20px var(--glow-blue); }
+.btn--primary:not(:disabled):hover { box-shadow: 0 0 12px var(--glow-blue), 0 0 35px var(--glow-blue); }
+.btn--secondary { background: transparent; color: var(--jedi-blue); border: 1px solid var(--jedi-blue); box-shadow: 0 0 6px var(--glow-blue); }
+.btn--ghost { background: rgba(255,255,255,0.08); color: var(--starlight-white); font-size: 0.85rem; padding: var(--sp-xs) var(--sp-sm); align-self: flex-end; }
+
+.btn--answer { background: var(--space-grey); color: var(--starlight-white); border: 1px solid #333; text-align: left; padding: var(--sp-sm); min-height: 52px; }
+.btn--answer.correct { border-color: var(--force-green) !important; background: rgba(139, 195, 74, 0.15) !important; box-shadow: 0 0 12px var(--glow-green) !important; opacity: 1 !important; }
+.btn--answer.wrong { border-color: var(--sith-red) !important; background: rgba(239, 83, 80, 0.15) !important; box-shadow: 0 0 12px var(--glow-red) !important; opacity: 1 !important; }
+
+/* ═══════════════════════════════════════
+   TRANSITION & JEDI DATAPAD (LORE BOX)
+═══════════════════════════════════════ */
+#transition-screen { background: var(--space-black); padding-top: calc(var(--sp-lg) * 2); }
+#transition-message { font-size: clamp(1.2rem, 5vw, 1.8rem); text-align: center; color: var(--starlight-white); }
+
+.lore-box { background: rgba(26, 26, 46, 0.85); border: 1px solid var(--jedi-blue); border-radius: 12px; padding: 1.5rem; box-shadow: 0 0 15px rgba(79, 195, 247, 0.2); margin: 1.5rem auto; max-width: 550px; line-height: 1.6; text-align: center; font-style: italic; color: var(--starlight-white); }
+
+/* ═══════════════════════════════════════
+   END SCREEN
+═══════════════════════════════════════ */
+#end-screen { background: radial-gradient(ellipse at bottom, #1a0a0a 0%, var(--space-black) 70%); text-align: center; }
+#end-screen h2 { font-size: clamp(1.5rem, 6vw, 2.5rem); color: var(--gold); }
+#final-score { font-size: clamp(1rem, 4vw, 1.4rem); color: var(--star-dim); }
+
+.victory-text { animation: goldPulse 2s infinite alternate; text-transform: uppercase; letter-spacing: 0.1em; }
+@keyframes goldPulse { 0% { text-shadow: 0 0 10px var(--gold), 0 0 20px var(--gold); transform: scale(1); } 100% { text-shadow: 0 0 20px var(--gold), 0 0 40px #ffea00; transform: scale(1.05); } }
+
+/* ═══════════════════════════════════════
+   MODAL & MERMAID FIXES
+═══════════════════════════════════════ */
+#media-modal { position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center; }
+#modal-backdrop { position: absolute; inset: 0; background: rgba(0, 0, 0, 0.85); }
+#modal-box { position: relative; z-index: 101; background: var(--space-grey); border: 1px solid #333; border-radius: 12px; padding: var(--sp-md); width: min(90vw, 560px); display: flex; flex-direction: column; gap: var(--sp-sm); max-height: 80vh; overflow-y: auto; }
+
+#mermaid-box { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+#mermaid-box svg { min-width: 600px; max-width: none; height: auto; }

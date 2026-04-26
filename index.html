@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Quizzler</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+
+  <div id="start-screen" class="view">
+    <h1 class="title">THE QUIZZLER</h1>
+    <p class="subtitle">A Star Wars Trivia Trial</p>
+    <button id="begin-btn" class="btn btn--primary">⚡ Begin Trials</button>
+  </div>
+
+  <div id="quiz-screen" class="view hidden">
+    <div id="hud">
+      <span id="hud-score">Score: 0</span>
+      <span id="hud-streak">Progress: 0/5 🔥</span>
+      <span id="hud-level">Level: 1</span>
+    </div>
+    <div id="question-card">
+      <p id="question-text">Loading from archive... ⏳</p>
+    </div>
+    <div id="answers-grid"></div>
+    <button id="hint-btn" class="btn btn--secondary hidden">Need help, young one? (Ask Master Yoda)</button>
+  </div>
+
+  <div id="transition-screen" class="view hidden">
+    <p id="transition-message">Well done!</p>
+    <button id="transition-xp" class="btn btn--primary" style="margin-top: 1.5rem;"></button>
+  </div>
+
+  <div id="end-screen" class="view hidden">
+    <h2>Trial Complete</h2>
+    <p id="final-score">Calculating destiny...</p>
+    <button id="restart-btn" class="btn btn--primary hidden">🔄 Try Again</button>
+  </div>
+
+  <div id="media-modal" class="hidden">
+    <div id="modal-backdrop"></div>
+    <div id="modal-box">
+      <button id="modal-close-btn" class="btn btn--ghost">✕ Close</button>
+      <iframe id="modal-iframe" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen class="hidden"></iframe>
+      <img id="modal-img" src="" class="hidden" />
+    </div>
+  </div>
+
+  <script>mermaid.initialize({ startOnLoad: false, theme: 'dark' });</script>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+
+</body>
+</html>
