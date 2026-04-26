@@ -26,16 +26,11 @@ function playSensoryFeedback(isCorrect) {
     gainNode.gain.setValueAtTime(1, now); gainNode.gain.exponentialRampToValueAtTime(0.01, now + 0.4);
     osc.start(now); osc.stop(now + 0.4);
   }
-}
-/* ───────────────────────────────────────
+}/* ───────────────────────────────────────
    API CONFIGURATION
 ─────────────────────────────────────── */
 const GEMINI_ENDPOINT = "https://star-wars-quiz-proxy.joshmott89.workers.dev";
 
-// Note: The GEMINI_API_KEY variable is completely deleted!
-
-
-const GEMINI_ENDPOINT = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`;
 
 const gameState = { currentLevel: 1, score: 0, levelAnswered: 0, levelCorrect: 0, usedQuestions: [], allQuestions: {}, allData: {}, currentQuestionText: "", currentQuestionObj: null };
 
